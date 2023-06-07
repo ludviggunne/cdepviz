@@ -60,7 +60,7 @@ def _parse_args():
 
     # TODO: Add usage section
     parser = argparse.ArgumentParser(
-        prog="deptrack"
+        prog="cdepviz"
     )
 
     parser.add_argument('path')
