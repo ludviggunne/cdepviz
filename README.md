@@ -8,3 +8,5 @@ Given a directory containing source/header files *dir/*, and one (or more) direc
 python3 cdepviz.py dir/ -e dir/exclude
 dot -Tpng output.dot -o output.png
 ```
+## Example
+![Example](./example.png)
