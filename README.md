@@ -1,12 +1,16 @@
 # cdepviz
-Visualize dependencies in a C/C++ project
+Visualize dependencies in a C/C++ project.
+cdepviz creates a directed graph based on a set of files and `#include` directives in those files, and outputs a **.dot** file for rendering with Graphviz.  
 
 ## Usage
-Given a directory containing source/header files *dir/*, and one (or more) directory *dir/exclude/* to be excluded from search, 
-**cdepviz** will generate *output.dot*, containing graph information for Graphviz.
-```console
-python3 cdepviz.py dir/ -e dir/exclude
-dot -Tpng output.dot -o output.png
+```bash
+ruby cdepviz.rb # Look for files in working directory
 ```
+```bash
+ruby cdepviz.rb src/ # Look for files in src/
+```
+## Options
+* `-e` / `--exclude`: Exclude directory from search
+* `-o` / `--output`: Output file
 ## Example
 ![Example](./example.png)
