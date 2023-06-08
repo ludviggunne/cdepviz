@@ -3,11 +3,9 @@ require 'optparse'
 require 'ostruct'
 require 'pathname'
 
-# Parse args
-# TODO: Parse args
 $config = OpenStruct.new
 $config.dir = '.'
-$config.exclude = ['example/extern']
+$config.exclude = []
 $config.output = 'output.dot'
 
 $EXTENSIONS = ['.c', '.h', '.cc', '.cpp', '.hpp']
@@ -30,6 +28,25 @@ class Node
     def connect(node)
         @connections.push node
     end
+end
+
+def parse_args
+
+    OptionParser.new do |parser|
+        
+        parser.on('-d DIR', '--directory=DIR', 'Specify directory') do |d|
+            $config.dir = d
+        end
+
+        parser.on('-e DIR', '--exclude=DIR', 'Exclude directory') do |e|
+            $config.exclude.push e
+        end
+
+        parser.on('-o FILE', '--output=FILE', 'Specify output file') do |o|
+            $config.output = o
+        end
+
+    end.parse! ARGV
 end
 
 def excluded(path)
@@ -106,5 +123,6 @@ def output
     end
 end
 
+parse_args
 create_nodes
 output
